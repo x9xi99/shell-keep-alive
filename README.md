@@ -30,68 +30,54 @@
      wget https://raw.githubusercontent.com/x9xi99/shell-keep-alive/main/keep_alive.sh && chmod +x keep_alive.sh && ./keep_alive.sh
      ```
 
-## 自定义
+## screen使用教程
 
-您可以根据需要修改脚本中的心跳时间间隔。在 `keep_alive.sh` 中找到以下行：
+`screen` 是一个多功能的终端多路复用器，可以在单个终端窗口中运行多个程序，即使网络断开或关闭终端，后台的会话仍然保持活跃。
+
+## 1. 安装 screen
 
 ```bash
-# 定义心跳时间间隔（单位：秒）
-HEARTBEAT_INTERVAL=60
-将 60 替换为您希望的时间间隔（单位为秒）。
+# Debian/Ubuntu 系统
+sudo apt update
+sudo apt install screen
 
-使用 tmux
-tmux 是一个终端复用器，允许您在一个窗口中创建多个会话。您可以使用 tmux 来保持会话活跃，同时运行其他命令。
+# CentOS/RHEL 系统
+sudo yum install screen
 
-安装 tmux
-如果您的系统尚未安装 tmux，可以使用以下命令安装：
-
-bash
-复制代码
-sudo yum install tmux -y
-使用 tmux
-启动 tmux 会话：
-
-bash
-复制代码
-tmux
-在 tmux 会话中运行保活脚本：
-
-bash
-复制代码
-./keep_alive.sh
-离开 tmux 会话：按下 Ctrl + B，然后按 D。
-
-重新连接到 tmux 会话：
-
-bash
-复制代码
-tmux attach
-使用 screen
-screen 是另一个终端复用器，类似于 tmux，允许您在多个窗口之间切换。
-
-安装 screen
-如果您的系统尚未安装 screen，可以使用以下命令安装：
-
-bash
-复制代码
-sudo yum install screen -y
-使用 screen
-启动 screen 会话：
+2. 基本命令
+启动一个新的会话：
 
 bash
 复制代码
 screen
-在 screen 会话中运行保活脚本：
+命名新会话：
 
 bash
 复制代码
-./keep_alive.sh
-离开 screen 会话：按下 Ctrl + A，然后按 D。
-
-重新连接到 screen 会话：
+screen -S <session_name>
+列出所有会话：
 
 bash
 复制代码
-screen -r
-停止脚本
-要停止脚本的运行，您可以按 Ctrl + C 来终止当前的 Shell 会话。
+screen -ls
+重新连接到指定会话：
+
+bash
+复制代码
+screen -r <session_name>
+分离当前会话： 使用快捷键 Ctrl + A 然后按 D，即可将当前会话放在后台，返回主终端。
+
+3. 常用快捷键
+快捷键以 Ctrl + A 开始，然后输入其他按键完成操作：
+
+Ctrl + A, D：分离当前会话
+Ctrl + A, C：创建一个新的窗口
+Ctrl + A, N：切换到下一个窗口
+Ctrl + A, P：切换到上一个窗口
+Ctrl + A, K：关闭当前窗口
+Ctrl + A, "（双引号）：显示窗口列表
+
+
+
+
+
