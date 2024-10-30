@@ -1,39 +1,39 @@
-一键命令
-curl -O https://raw.githubusercontent.com/x9xi99/shell-keep-alive/main/keep_alive.sh && chmod +x keep_alive.sh && ./keep_alive.sh
+# Shell Keep Alive Script
 
+该脚本旨在帮助用户在 AWS CloudShell 或其他 Linux 环境中保持会话活跃，防止因长时间未活动而自动终止。
 
+## 功能
 
-解释命令
-while true; do ... done: 创建一个无限循环。
-echo "保持会话活跃 $(date)": 每隔一段时间输出当前时间，以便于查看。
-sleep 60: 每 60 秒执行一次循环，您可以根据需要调整时间间隔。
-运行其他命令
-在您运行这个保活命令时，可以在新的终端标签页或窗口中打开另一个 CloudShell 会话，这样您可以在一个会话中运行这个保活命令，而在另一个会话中执行其他命令。
+- 定期发送心跳信号以保持会话活跃
+- 可配置的心跳间隔
+- 简单易用的一键运行命令
 
-或者使用 tmux 或 screen
-为了更方便地管理会话，您可以考虑使用 tmux 或 screen 来创建持久会话。这样，即使您断开连接，您的会话也会继续运行。
+## 安装
 
-安装和使用 tmux
-安装 tmux（如果尚未安装）：
+您可以使用 `curl` 或 `wget` 一键下载并运行该脚本。请按照以下步骤操作：
 
-bash
-复制代码
-sudo yum install tmux -y
-启动 tmux：
+### 使用方法
 
-bash
-复制代码
-tmux
-在 tmux 中运行保活命令：
+1. **打开 AWS CloudShell 或其他终端**。
 
-bash
-复制代码
-while true; do echo "保持会话活跃 $(date)"; sleep 60; done
-离开 tmux 会话：按下 Ctrl + B，然后按 D，将会话放在后台。
+2. **运行以下命令以下载并执行脚本**：
 
-重新连接 tmux 会话：
+   - 使用 `curl`：
 
-bash
-复制代码
-tmux attach
-使用 tmux 可以帮助您在 AWS CloudShell 中保持会话活跃，并且能够在同一环境中运行其他命令。
+     ```bash
+     curl -O https://raw.githubusercontent.com/x9xi99/shell-keep-alive/main/keep_alive.sh && chmod +x keep_alive.sh && ./keep_alive.sh
+     ```
+
+   - 使用 `wget`：
+
+     ```bash
+     wget https://raw.githubusercontent.com/x9xi99/shell-keep-alive/main/keep_alive.sh && chmod +x keep_alive.sh && ./keep_alive.sh
+     ```
+
+## 自定义
+
+您可以根据需要修改脚本中的心跳时间间隔。在 `keep_alive.sh` 中找到以下行：
+
+```bash
+# 定义心跳时间间隔（单位：秒）
+HEARTBEAT_INTERVAL=60
