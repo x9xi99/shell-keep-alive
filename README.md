@@ -34,9 +34,11 @@
 
 `screen` 是一个多功能的终端多路复用器，可以在单个终端窗口中运行多个程序，即使网络断开或关闭终端，后台的会话仍然保持活跃。
 
-## 1. 安装 screen
+
 
 ```bash
+1. 安装screen
+
 # Debian/Ubuntu 系统
 sudo apt update
 sudo apt install screen
@@ -76,6 +78,7 @@ Ctrl + A, N：切换到下一个窗口
 Ctrl + A, P：切换到上一个窗口
 Ctrl + A, K：关闭当前窗口
 Ctrl + A, "（双引号）：显示窗口列表
+```
 
 
 
