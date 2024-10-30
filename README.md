@@ -1,3 +1,8 @@
+一键命令
+curl -O https://raw.githubusercontent.com/x9xi99/shell-keep-alive/main/keep_alive.sh && chmod +x keep_alive.sh && ./keep_alive.sh
+
+
+
 解释命令
 while true; do ... done: 创建一个无限循环。
 echo "保持会话活跃 $(date)": 每隔一段时间输出当前时间，以便于查看。
